@@ -22,7 +22,7 @@ You write the desired steps in YAML files called playbooks. Ansible connects to 
 2. Type the commands yourself in a lab environment.
 3. Start with ad-hoc commands before writing large playbooks.
 4. Practice each mini task before moving forward.
-5. Build the final project in `22_Real_World_Project.md`.
+5. Build the final project in `22_Real_World_Project/22_Real_World_Project.md`.
 
 ## Learning Path
 
@@ -38,10 +38,15 @@ You write the desired steps in YAML files called playbooks. Ansible connects to 
 
 ```text
 ansible-learning-notes/
-  00_README.md
-  01_Introduction_to_Ansible.md
+  00_README/
+    00_README.md
+  01_Introduction_to_Ansible/
+    01_Introduction_to_Ansible.md
   ...
-  25_Ansible_CheatSheet.md
+  25_Ansible_CheatSheet/
+    25_Ansible_CheatSheet.md
+  26_20_Playbook_Examples/
+    26_20_Playbook_Examples.md
   examples/
     inventory/
     playbooks/
