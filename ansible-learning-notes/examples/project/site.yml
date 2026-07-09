@@ -1,0 +1,9 @@
+---
+- name: Configure two Ubuntu web servers
+  hosts: web
+  become: true
+  vars_files:
+    - group_vars/vault.yml
+  roles:
+    - webserver
+

@@ -1,0 +1,4 @@
+# Encrypt this file with:
+# ansible-vault encrypt group_vars/vault.yml
+vault_app_secret: replace-this-demo-secret
+

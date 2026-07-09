@@ -1,0 +1,5 @@
+package_name: nginx
+service_name: nginx
+app_port: 80
+app_user: deploy
+

@@ -1,0 +1,43 @@
+---
+- name: Install nginx and git
+  ansible.builtin.apt:
+    name:
+      - "{{ nginx_package }}"
+      - git
+    state: present
+    update_cache: true
+
+- name: Create app user
+  ansible.builtin.user:
+    name: "{{ app_user }}"
+    shell: /bin/bash
+    create_home: true
+
+- name: Copy demo app file
+  ansible.builtin.copy:
+    src: app.txt
+    dest: "/home/{{ app_user }}/app.txt"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: "0644"
+
+- name: Render nginx site config
+  ansible.builtin.template:
+    src: nginx-site.conf.j2
+    dest: /etc/nginx/sites-available/default
+    mode: "0644"
+  notify: Restart nginx
+
+- name: Render index page
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    mode: "0644"
+  notify: Restart nginx
+
+- name: Ensure nginx is running
+  ansible.builtin.service:
+    name: "{{ nginx_service }}"
+    state: started
+    enabled: true
+

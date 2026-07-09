@@ -1,0 +1,10 @@
+---
+- name: Use encrypted variables
+  hosts: web
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: Confirm secret file loaded
+      ansible.builtin.debug:
+        msg: "Vault secret is loaded for {{ inventory_hostname }}"
+

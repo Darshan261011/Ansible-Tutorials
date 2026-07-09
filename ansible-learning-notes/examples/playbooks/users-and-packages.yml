@@ -1,0 +1,30 @@
+---
+- name: Create users and install packages
+  hosts: all
+  become: true
+  vars:
+    packages:
+      - git
+      - curl
+      - unzip
+    users:
+      - name: deploy
+        shell: /bin/bash
+      - name: appuser
+        shell: /usr/sbin/nologin
+  tasks:
+    - name: Install useful packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: true
+      loop: "{{ packages }}"
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Create application users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        shell: "{{ item.shell }}"
+        state: present
+      loop: "{{ users }}"
+

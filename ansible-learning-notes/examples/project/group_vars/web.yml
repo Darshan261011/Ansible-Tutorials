@@ -1,0 +1,8 @@
+app_user: deploy
+app_name: production-demo
+nginx_port: 80
+server_name: "_"
+firewall_allowed_ports:
+  - "22"
+  - "80"
+

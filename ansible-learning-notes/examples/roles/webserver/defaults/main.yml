@@ -1,0 +1,8 @@
+---
+nginx_package: nginx
+nginx_service: nginx
+nginx_port: 80
+server_name: "_"
+app_name: demo-web
+app_user: deploy
+
